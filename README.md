@@ -16,6 +16,8 @@
   - `GET /api/bonuses/:phone`
   - `POST /api/bonuses/use`
   - `POST /api/upload-url` (заготовка под прямую загрузку в S3/Supabase)
+  - `GET/POST /api/blog`, `PUT/DELETE /api/blog/:id`
+  - `GET/POST /api/faq`, `PUT/DELETE /api/faq/:id`
 - Репозиторий данных:
   - fallback in-memory для локальной разработки,
   - Supabase REST-режим при наличии env (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`).
@@ -38,6 +40,7 @@ ADMIN_PASSWORD=strong_password_here
 - Вход: `/admin/login` и `POST /api/admin/login`.
 - Выход: `POST /api/admin/logout`.
 - Пароль задаётся через `ADMIN_PASSWORD`.
+- В админке доступно управление контентом блога и FAQ.
 
 ## Запуск
 

@@ -1,18 +1,15 @@
-const faq = [
-  ['Сколько длится уборка?', 'Обычно 2–6 часов в зависимости от площади и типа услуги.'],
-  ['Можно загрузить фото и видео?', 'Да. До 4 фото и 1 видео через облачное хранилище по защищённой ссылке.'],
-  ['Нужно ли быть дома во время уборки?', 'Желательно на старте и в конце для передачи объекта, но возможны гибкие сценарии.'],
-  ['Как работает бонусная система?', 'Начисляем 10% после выполненного заказа и разрешаем списание до 10% на новую заявку.']
-];
+import { listFaq } from '@/lib/content-store';
 
 export default function FAQPage() {
+  const faq = listFaq();
+
   return (
     <section>
       <h1>FAQ</h1>
-      {faq.map(([q, a]) => (
-        <details key={q} className="card" style={{ marginBottom: 10 }}>
-          <summary><strong>{q}</strong></summary>
-          <p>{a}</p>
+      {faq.map((item) => (
+        <details key={item.id} className="card" style={{ marginBottom: 10 }}>
+          <summary><strong>{item.question}</strong></summary>
+          <p>{item.answer}</p>
         </details>
       ))}
     </section>
