@@ -1,6 +1,12 @@
+import { redirect } from 'next/navigation';
 import AdminDashboard from '@/components/AdminDashboard';
+import { isAdminAuthenticated } from '@/lib/auth';
 
 export default function AdminPage() {
+  if (!isAdminAuthenticated()) {
+    redirect('/admin/login');
+  }
+
   return (
     <section>
       <h1>Админ-панель</h1>

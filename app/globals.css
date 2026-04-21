@@ -124,6 +124,22 @@ button:disabled { opacity: .7; cursor: not-allowed; }
 .success { color: #0f7a49; }
 .admin-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 
+.admin-toolbar {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 14px;
+}
+.admin-toolbar label { margin: 0; }
+.admin-toolbar select { min-width: 180px; }
+
+code {
+  background: #eef5f2;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
 .footer { padding: 26px 16px 42px; color: #33524f; }
 
 @media (max-width: 860px) {

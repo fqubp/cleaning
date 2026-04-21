@@ -23,10 +23,20 @@ async function parseRequest(req: NextRequest): Promise<CreateRequestInput> {
   };
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const repo = getRepository();
   const requests = await repo.listRequests();
-  return NextResponse.json(requests);
+
+  const status = req.nextUrl.searchParams.get('status');
+  const phone = req.nextUrl.searchParams.get('phone');
+
+  const filtered = requests.filter((r) => {
+    if (status && r.status !== status) return false;
+    if (phone && !r.phone.includes(phone)) return false;
+    return true;
+  });
+
+  return NextResponse.json(filtered);
 }
 
 export async function POST(req: NextRequest) {

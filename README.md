@@ -27,9 +27,17 @@
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 MOCK_UPLOAD_URL=https://your-upload-endpoint
+ADMIN_PASSWORD=strong_password_here
 ```
 
 Если `SUPABASE_*` не заданы, проект автоматически работает в режиме in-memory.
+
+
+## Админ-доступ
+- `GET /admin` защищён cookie-сессией.
+- Вход: `/admin/login` и `POST /api/admin/login`.
+- Выход: `POST /api/admin/logout`.
+- Пароль задаётся через `ADMIN_PASSWORD`.
 
 ## Запуск
 
