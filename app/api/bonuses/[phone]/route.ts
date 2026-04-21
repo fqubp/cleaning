@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getBonuses } from '@/lib/store';
+import { getRepository } from '@/lib/repository';
 
 export async function GET(_req: Request, { params }: { params: { phone: string } }) {
-  return NextResponse.json({ balance: getBonuses(params.phone), history: [] });
+  const repo = getRepository();
+  const balance = await repo.getBonuses(params.phone);
+  return NextResponse.json({ balance, history: [] });
 }

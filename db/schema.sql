@@ -49,3 +49,17 @@ create table if not exists bonus_history (
   reason text not null,
   created_at timestamptz not null default now()
 );
+
+create table if not exists blog_posts (
+  id bigserial primary key,
+  title text not null,
+  slug text unique not null,
+  content text not null,
+  image_url text,
+  tags text[] default '{}',
+  published_at timestamptz not null default now()
+);
+
+create index if not exists idx_requests_created_at on requests(created_at desc);
+create index if not exists idx_requests_status on requests(status);
+create index if not exists idx_requests_phone on requests(client_phone);
